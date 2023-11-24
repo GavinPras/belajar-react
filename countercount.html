@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Counter Count</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      .main {
+        display: flex;
+        text-align: center;
+        margin: 0 auto;
+        position: relative;
+      }
+      .main button {
+        width: 100px;
+        margin: 0 auto;
+      }
+      .resetBtn {
+        width: 100px;
+        margin: 10px auto;
+      }
+      .container {
+        margin: 0 auto;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+
+      function Main() {
+        const [value, setValues] = React.useState(0);
+
+        function handlePlus() {
+          setValues(value + 1);
+        }
+
+        function handleMinus() {
+          setValues(value - 1);
+        }
+
+        function handleReset() {
+          setValues(0);
+        }
+        return (
+          <>
+            <div className="container">
+              <div className="main">
+                <button onClick={handlePlus}>➕</button>
+                <h1>{value}</h1>
+                <button onClick={handleMinus}>➖</button>
+              </div>
+              <button className="resetBtn" onClick={handleReset}>
+                Reset
+              </button>
+            </div>
+          </>
+        );
+      }
+      root.render(<Main />);
+    </script>
+  </body>
+</html>
